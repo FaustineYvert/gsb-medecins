@@ -1,8 +1,8 @@
-module fr.faustine.gsb_medecins {
+module fr.faustine.gsbmedecins {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens fr.faustine.gsb_medecins to javafx.fxml;
-    exports fr.faustine.gsb_medecins;
+    opens fr.faustine.gsbmedecins to javafx.fxml;
+    exports fr.faustine.gsbmedecins;
 }

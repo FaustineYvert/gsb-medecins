@@ -1,4 +1,4 @@
-package fr.faustine.gsb_medecins;
+package fr.faustine.gsbmedecins;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

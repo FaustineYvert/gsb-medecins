@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'fr.faustine.gsb_medecins'
-    mainClass = 'fr.faustine.gsb_medecins.HelloApplication'
+    mainModule = 'fr.faustine.gsbmedecins'
+    mainClass = 'fr.faustine.gsbmedecins.HelloApplication'
 }
 
 javafx {
