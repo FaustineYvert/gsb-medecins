@@ -1,7 +1,11 @@
-#medecinstable{
+/* Medecins */
+#medecins_table{
     -fx-font-size: 10px;
 }
 
-#medecins{
-    -fx-background-color: red;
+
+/* Départements */
+#departement_table{
+    -fx-font-size: 10px;
 }
+

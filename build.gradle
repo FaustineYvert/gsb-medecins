@@ -34,9 +34,12 @@ javafx {
 }
 
 dependencies {
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation('mysql:mysql-connector-java:8.0.28')
+    implementation('com.dlsc.formsfx:formsfx-core:11.4.2') {
+        exclude(group: 'org.openjfx')
+    }
 }
 
 test {

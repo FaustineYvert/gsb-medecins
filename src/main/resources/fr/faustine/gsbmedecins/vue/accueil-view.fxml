@@ -12,21 +12,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="296.0" style="-fx-background-color: #C6E2FF #C6E2FF #C6E2FF #C6E2FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="296.0" style="-fx-background-color: #C6E2FF #C6E2FF #C6E2FF #C6E2FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.faustine.gsbmedecins.MainController">
    <children>
       <Rectangle arcWidth="5.0" fill="#60b9db" height="53.0" layoutX="-2.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="298.0" />
       <ImageView fitHeight="29.0" fitWidth="55.0" layoutX="6.0" layoutY="11.0">
          <image>
-            <Image url="@assets/img/gsb-logo-blanc.png" />
+            <Image url="@../assets/img/gsb-logo-blanc.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="20.0" arcWidth="5.0" fill="#00000040" height="125.0" layoutX="13.0" layoutY="188.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-width: 20;" width="125.0" />
       <Rectangle arcHeight="20.0" arcWidth="5.0" fill="#0000003f" height="125.0" layoutX="157.0" layoutY="188.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-width: 20;" width="125.0" />
-      <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#00000057" height="50.0" layoutX="166.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10;" width="50.0" />
-      <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#00000057" height="50.0" layoutX="223.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10;" width="50.0" />
-      <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#00000057" height="50.0" layoutX="166.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10;" width="50.0" />
-      <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#00000057" height="50.0" layoutX="223.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10;" width="50.0" />
-      <Button alignment="CENTER" contentDisplay="BOTTOM" layoutX="66.0" layoutY="15.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF;" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
+      <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#00000057" height="24.0" layoutX="166.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10;" width="107.0" />
+      <Button fx:id="accueil_button" alignment="CENTER" contentDisplay="BOTTOM" layoutX="66.0" layoutY="15.0" mnemonicParsing="false" onAction="#accueilButtonClicked" style="-fx-background-radius: 5; -fx-background-color: #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF;" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
          <font>
             <Font size="10.0" />
          </font>
@@ -44,7 +41,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button contentDisplay="BOTTOM" layoutX="153.0" layoutY="15.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Départements" textOverrun="LEADING_ELLIPSIS">
+      <Button fx:id="departement_button" contentDisplay="BOTTOM" layoutX="153.0" layoutY="15.0" mnemonicParsing="false" onAction="#departementButtonClicked" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Départements" textOverrun="LEADING_ELLIPSIS">
          <font>
             <Font size="10.0" />
          </font>
@@ -55,7 +52,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button contentDisplay="BOTTOM" layoutX="115.0" layoutY="15.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Pays" textOverrun="LEADING_ELLIPSIS">
+      <Button fx:id="pays_button" contentDisplay="BOTTOM" layoutX="115.0" layoutY="15.0" mnemonicParsing="false" onAction="#paysButtonClicked" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Pays" textOverrun="LEADING_ELLIPSIS">
          <font>
             <Font size="10.0" />
          </font>
@@ -66,7 +63,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button contentDisplay="BOTTOM" layoutX="231.0" layoutY="15.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Médecins">
+      <Button fx:id="medecin_button" contentDisplay="BOTTOM" layoutX="231.0" layoutY="15.0" mnemonicParsing="false" onAction="#medecinButtonClicked" style="-fx-background-radius: 5; -fx-background-color: #FFFFFF;" text="Médecins">
          <font>
             <Font size="10.0" />
          </font>
@@ -77,28 +74,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fill="#60b9db" layoutX="227.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" wrappingWidth="41.15611267089844">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="227.5" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="médecins actifs" textAlignment="CENTER" wrappingWidth="41.15611267089844">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="171.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10.04.2022" textAlignment="CENTER" wrappingWidth="41.15611267089844">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
       <Text layoutX="60.0" layoutY="210.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="PAYS" />
       <Text layoutX="16.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software." textAlignment="JUSTIFY" wrappingWidth="263.997314453125">
          <font>
             <Font size="10.0" />
          </font>
       </Text>
-      <Button layoutX="26.0" layoutY="289.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
+      <Button layoutX="26.0" layoutY="289.0" mnemonicParsing="false" onAction="#paysButtonClicked" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
          <font>
             <Font size="8.0" />
          </font>
@@ -111,7 +93,7 @@
       </Button>
       <Rectangle arcHeight="20.0" arcWidth="5.0" fill="#00000040" height="125.0" layoutX="13.0" layoutY="330.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-width: 20;" width="125.0" />
       <Text layoutX="44.0" layoutY="352.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="MEDECINS" />
-      <Button layoutX="26.0" layoutY="431.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
+      <Button layoutX="26.0" layoutY="431.0" mnemonicParsing="false" onAction="#medecinButtonClicked" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
          <font>
             <Font size="8.0" />
          </font>
@@ -124,7 +106,7 @@
       </Button>
       <Rectangle arcHeight="20.0" arcWidth="5.0" fill="#00000040" height="125.0" layoutX="157.0" layoutY="330.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-width: 20;" width="125.0" />
       <Text layoutX="171.0" layoutY="351.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPARTEMENTS" />
-      <Button layoutX="170.0" layoutY="431.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
+      <Button layoutX="170.0" layoutY="431.0" mnemonicParsing="false" onAction="#departementButtonClicked" prefHeight="15.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 3;" text="Voir plus...">
          <font>
             <Font size="8.0" />
          </font>
@@ -135,5 +117,40 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fitHeight="72.0" fitWidth="73.0" layoutX="39.0" layoutY="356.0">
+         <image>
+            <Image url="@../assets/img/accueil-medecin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="37.0" layoutY="213.0">
+         <image>
+            <Image url="@../assets/img/accueil-pays.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="81.0" layoutX="179.0" layoutY="358.0">
+         <image>
+            <Image url="@../assets/img/accueil-departement.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="175.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Galaxy Swiss Bourdin">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="106.0" fitWidth="122.0" layoutX="159.0" layoutY="216.0">
+         <image>
+            <Image url="@../assets/img/accueil-bienvenue.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="122.0" layoutX="157.0" layoutY="199.0">
+         <image>
+            <Image url="@../assets/img/accueil-bienvenue.png" />
+         </image>
+      </ImageView>
+      <Text fill="#5b5b5b" layoutX="207.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*nom*">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
