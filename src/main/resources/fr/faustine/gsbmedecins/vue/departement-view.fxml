@@ -89,9 +89,10 @@
       </TextField>
       <TableView fx:id="departements_table" layoutX="10.0" layoutY="158.0" prefHeight="332.0" prefWidth="277.0" style="-fx-border-radius: 5; -fx-background-color: #FFFFFF;" stylesheets="@../assets/css/AP4css.css">
          <columns>
-            <TableColumn fx:id="departement_id" prefWidth="56.0" text="#" />
-            <TableColumn fx:id="departement_libelle" prefWidth="150.5" text="Libellé" />
-            <TableColumn fx:id="departement_action" prefWidth="69.5" text="+" />
+            <TableColumn fx:id="departement_id" prefWidth="18.0" text="#" />
+            <TableColumn fx:id="departement_libelle" prefWidth="81.5" text="Libellé" />
+            <TableColumn fx:id="departement_nomPays" prefWidth="95.5" text="Nom du pays" />
+            <TableColumn fx:id="departement_action" prefWidth="81.0" text="+" />
          </columns>
       </TableView>
       <Button fx:id="ajouter_button" layoutX="24.0" layoutY="110.0" mnemonicParsing="false" onAction="#ajouterButtonClicked" style="-fx-background-color: #93c47d; -fx-background-radius: 5;" text="Ajouter">

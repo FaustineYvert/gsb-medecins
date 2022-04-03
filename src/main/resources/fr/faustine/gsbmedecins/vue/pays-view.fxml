@@ -102,11 +102,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="pays_table" layoutX="10.0" layoutY="158.0" prefHeight="332.0" prefWidth="277.0" style="-fx-border-radius: 5; -fx-background-color: #FFFFFF;" stylesheets="@../assets/css/AP4css.css">
+      <TableView fx:id="pays_table" layoutX="10.0" layoutY="158.0" pickOnBounds="false" prefHeight="332.0" prefWidth="277.0" scaleShape="false" style="-fx-border-radius: 5; -fx-background-color: #FFFFFF;" stylesheets="@../assets/css/AP4css.css">
          <columns>
             <TableColumn fx:id="pays_id" prefWidth="56.0" text="#" />
-            <TableColumn fx:id="pays_libelle" prefWidth="150.5" text="Libellé" />
-            <TableColumn fx:id="pays_action" prefWidth="69.5" text="+" />
+            <TableColumn fx:id="pays_libelle" prefWidth="114.5" text="Libellé" />
+            <TableColumn fx:id="pays_action" prefWidth="105.5" text="+" />
          </columns>
       </TableView>
    </children>

@@ -1,11 +1,12 @@
 package fr.faustine.gsbmedecins.modele;
 
 public class Utilisateur {
-
     // Variables
     private Integer id;
     private String nom_utilisateur;
     private String mdp;
+
+    private static Utilisateur utilisateurActuel = null;
 
     // Constructeur
     public Utilisateur(Integer id, String nom_utilisateur, String mdp) {
@@ -14,7 +15,7 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
-    // Getter
+    // Getter & Setter
     public Integer getId() {
         return id;
     }
@@ -25,5 +26,13 @@ public class Utilisateur {
 
     public String getMdp() {
         return mdp;
+    }
+
+    public static void setUtilisateurActuel(Utilisateur utilisateur) {
+        Utilisateur.utilisateurActuel = utilisateur;
+    }
+
+    public static Utilisateur getUtilisateurActuel() {
+        return Utilisateur.utilisateurActuel;
     }
 }

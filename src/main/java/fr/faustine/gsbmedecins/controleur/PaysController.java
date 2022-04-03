@@ -1,14 +1,21 @@
 package fr.faustine.gsbmedecins.controleur;
 
 import fr.faustine.gsbmedecins.MainController;
+import fr.faustine.gsbmedecins.controleur.pays.EditController;
 import fr.faustine.gsbmedecins.modele.Pays;
 import fr.faustine.gsbmedecins.modele.PaysDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,34 +61,94 @@ public class PaysController implements Initializable {
 
         // Ajout d'un pays
     @FXML
-    private void ajouterButtonClicked(ActionEvent event) throws IOException {
-        MainController.changerPage("vue/ajout-pays-view.fxml", event);
+    private void ajouterButtonClicked() {
+        // Créer une nouvelle fenêtre
+        Stage stage = new Stage();
+        Pane scene_window = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fr/faustine/gsbmedecins/vue/ajout-pays-view.fxml"));
+
+        try {
+            scene_window = loader.load();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        // Ajouter la Scene
+        assert scene_window != null;
+        Scene scene = new Scene(scene_window);
+        stage.setScene(scene);
+        stage.setResizable(false);
+
+        stage.show();
     }
 
-        // Retour sur pays
-    @FXML
-    private void testlolButtonMdr(ActionEvent event) throws IOException {
-        System.out.println("got");
-        MainController.changerPage("vue/pays-view.fxml", event);
-    }
-
-    @FXML
-    private void retourButtonClicked2(ActionEvent event) throws IOException {
-        MainController.changerPage("vue/pays-view.fxml", event);
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    private void pays_table_load(ObservableList<Pays> pays_List) {
         pays_table.getItems().clear();
         pays_table.refresh();
 
         pays_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         pays_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
 
-        // Cacher la colonne action si pas admin
-        pays_action.setVisible(false);
+        // Ajout d'un bouton "voir"
+        // Create buttons for every rows
+        Callback<TableColumn<Pays, String>, TableCell<Pays, String>> cellFactory = (param) -> new TableCell<>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
 
-        pays_table.getItems().addAll(PaysDAO.getAll());
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    final Button voir_button = new Button("Voir plus");
+                    //voir_button.getStyleClass().add("button-blue");
+                    voir_button.setCursor(Cursor.HAND);
+
+                    voir_button.setOnAction(event -> {
+                        Pays paysClicked = getTableView().getItems().get(getIndex());
+                        EditController.setPaysActuel(paysClicked); // Définir le pays sur lequel on a cliqué
+
+                        // Create new stage
+                        Stage stage = new Stage();
+                        Pane scene_window = null;
+                        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fr/faustine/gsbmedecins/vue/voirplus-medecin-view.fxml"));
+
+                        try {
+                            scene_window = loader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Set Scene
+                        assert scene_window != null; // scene_window might be null, so assert
+                        Scene scene = new Scene(scene_window);
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+
+                        stage.show();
+                    });
+
+                    setGraphic(voir_button);
+                    setText(null);
+                }
+            }
+        };
+
+        // Attribute buttons to the column
+        pays_action.setCellFactory(cellFactory);
+
+        table_reload(pays_List);
+        pays_table.setPlaceholder(new Label("Pays non trouvé(s)"));
+    }
+
+    private void table_reload(ObservableList<Pays> pays_List) {
+        pays_table.getItems().clear();
         pays_table.refresh();
+        pays_table.getItems().addAll(pays_List);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+       pays_table_load(PaysDAO.getAll());
     }
 }
