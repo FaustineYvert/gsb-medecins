@@ -89,7 +89,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="medecinssearchbar" layoutX="17.0" layoutY="80.0" prefHeight="20.0" prefWidth="184.0" promptText="Rechercher un pays..." style="-fx-background-color: #FFFFFF#FFFFFF; -fx-background-radius: 5;">
+      <TextField fx:id="payssearchbar" layoutX="17.0" layoutY="80.0" prefHeight="20.0" prefWidth="184.0" promptText="Rechercher un pays..." style="-fx-background-color: #FFFFFF#FFFFFF; -fx-background-radius: 5;">
          <font>
             <Font size="10.0" />
          </font>
@@ -109,5 +109,12 @@
             <TableColumn fx:id="pays_action" prefWidth="105.5" text="+" />
          </columns>
       </TableView>
+      <Button fx:id="refresh_button" layoutX="238.0" layoutY="120.0" mnemonicParsing="false" onAction="#refreshButtonClicked" style="-fx-background-color: #60b9db#60b9db;" text="rafraîchir">
+         <font>
+            <Font size="9.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

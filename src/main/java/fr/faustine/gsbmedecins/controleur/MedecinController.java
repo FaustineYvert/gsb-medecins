@@ -32,6 +32,9 @@ public class MedecinController implements Initializable {
     @FXML
     public TableColumn<Medecin, String> medecin_lastname, medecin_firstname, medecin_action;
 
+    @FXML
+    public TextField medecins_searchbar;
+
     // FXML Functions
         // NavBar
     @FXML
@@ -55,8 +58,13 @@ public class MedecinController implements Initializable {
     }
 
     @FXML
+    private void refreshButtonClicked(ActionEvent event) throws IOException {
+        MainController.changerPage("vue/medecin-view.fxml", event);
+    }
+
+    @FXML
     private void rechercherButtonClicked() {
-        //
+        medecins_table_load(MedecinDAO.getByLike(medecins_searchbar.getText()));
     }
 
         // Ajout d'un médecin
@@ -139,7 +147,7 @@ public class MedecinController implements Initializable {
         medecin_action.setCellFactory(cellFactory);
 
         table_reload(pays_List);
-        medecins_table.setPlaceholder(new Label("Pays non trouvé(s)"));
+        medecins_table.setPlaceholder(new Label("Médecin(s) non trouvé(s)"));
     }
 
     private void table_reload(ObservableList<Medecin> medecins_List) {

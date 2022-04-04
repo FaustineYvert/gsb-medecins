@@ -37,6 +37,9 @@ public class DepartementController implements Initializable {
     @FXML
     public TableColumn<Departement, String> departement_action;
 
+    @FXML
+    private TextField departementsearchbar;
+
     // FXML Functions
     // NavBar
     @FXML
@@ -60,8 +63,13 @@ public class DepartementController implements Initializable {
     }
 
     @FXML
+    private void refreshButtonClicked(ActionEvent event) throws IOException {
+        MainController.changerPage("vue/departement-view.fxml", event);
+    }
+
+    @FXML
     private void rechercherButtonClicked() {
-        //
+        departement_table_load(DepartementDAO.getByLike(departementsearchbar.getText()));
     }
 
         // Ajout d'un departement

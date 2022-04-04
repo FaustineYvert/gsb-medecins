@@ -3,7 +3,6 @@ package fr.faustine.gsbmedecins.modele;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -54,9 +53,19 @@ public class PaysDAO extends ConnexionBDD {
         return pays;
     }
 
+    // ajout d'un pays
     public static void addPays(String libelle) {
         try {
             ConnexionBDD.execute("INSERT INTO pays(libelle) VALUES ('" + libelle + "');");
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // suppression d'un département
+    public static void deletePaysById(int id) {
+        try {
+            ConnexionBDD.execute("DELETE FROM pays WHERE id = " + id + ";");
         } catch(SQLException e) {
             e.printStackTrace();
         }
@@ -79,5 +88,41 @@ public class PaysDAO extends ConnexionBDD {
         }
 
         return pays.getLibelle();
+    }
+
+    public static void updatePaysByID(Integer id, String new_libelle) {
+        try {
+            ConnexionBDD.execute(
+        "UPDATE pays " +
+                "SET libelle = '" + new_libelle + "' " +
+                "WHERE id = " + id + ";"
+            );
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ObservableList<Pays> getByLike(String search) {
+        ObservableList<Pays> pays_List = FXCollections.observableArrayList();
+
+        try {
+            ResultSet request = ConnexionBDD.query(
+                    "SELECT * FROM pays " +
+                            "WHERE libelle LIKE '%" + search + "%';"
+            );
+
+            while(request.next()) {
+                pays_List.addAll(
+                        new Pays(
+                                request.getInt("id"),
+                                request.getString("libelle")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pays_List;
     }
 }

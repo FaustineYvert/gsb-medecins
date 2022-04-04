@@ -32,6 +32,9 @@ public class PaysController implements Initializable {
     @FXML
     public TableColumn<Pays, String> pays_libelle, pays_action;
 
+    @FXML
+    private TextField payssearchbar;
+
 
     // FXML Functions
     @FXML
@@ -55,8 +58,13 @@ public class PaysController implements Initializable {
     }
 
     @FXML
+    private void refreshButtonClicked(ActionEvent event) throws IOException {
+        MainController.changerPage("vue/pays-view.fxml", event);
+    }
+
+    @FXML
     private void rechercherButtonClicked() {
-        //
+        pays_table_load(PaysDAO.getByLike(payssearchbar.getText()));
     }
 
         // Ajout d'un pays
@@ -111,7 +119,7 @@ public class PaysController implements Initializable {
                         // Create new stage
                         Stage stage = new Stage();
                         Pane scene_window = null;
-                        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fr/faustine/gsbmedecins/vue/voirplus-medecin-view.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fr/faustine/gsbmedecins/vue/voirplus-pays-view.fxml"));
 
                         try {
                             scene_window = loader.load();

@@ -8,25 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="296.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="296.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.faustine.gsbmedecins.controleur.pays.EditController">
    <children>
       <Rectangle arcWidth="5.0" fill="#60b9db" height="38.0" layoutX="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="298.0" />
-      <Text layoutX="99.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiche du médecin" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="94.0" promptText="nom_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="199.0" promptText="tel_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="129.0" promptText="prenom_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="164.0" promptText="adresse_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="238.0" promptText="spe_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <Text layoutX="15.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-      <Text layoutX="15.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
-      <Text layoutX="15.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
-      <Text layoutX="15.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone" />
-      <Text layoutX="15.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spécialité  Complémentaire" wrappingWidth="96.1513671875" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="277.0" promptText="departement_medecin" style="-fx-border-color: #60b9db#60b9db;" />
-      <Text layoutX="15.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Département" wrappingWidth="96.1513671875" />
-      <TextField disable="true" editable="false" layoutX="124.0" layoutY="49.0" promptText="id_medecin" style="-fx-border-color: #60b9db;" />
+      <Text layoutX="110.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiche du pays" />
+      <Text layoutX="15.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pays" />
+      <TextField fx:id="id_pays" disable="true" editable="false" layoutX="124.0" layoutY="49.0" promptText="ID du pays" style="-fx-border-color: #60b9db;" />
       <Text layoutX="15.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identifiant" />
-      <Button layoutX="212.0" layoutY="330.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #C8C8C8#C8C8C8; -fx-background-radius: 5;" text="Fermer">
+      <Button fx:id="retour_button" layoutX="212.0" layoutY="142.0" mnemonicParsing="false" onAction="#retourButtonClicked" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #C8C8C8#C8C8C8; -fx-background-radius: 5;" text="Fermer">
          <font>
             <Font size="10.0" />
          </font>
@@ -34,7 +23,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="15.0" layoutY="330.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #ffd966; -fx-background-radius: 5;" text="Modifier">
+      <Button fx:id="modifier_button" layoutX="15.0" layoutY="142.0" mnemonicParsing="false" onAction="#modifierButtonClicked" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #ffd966; -fx-background-radius: 5;" text="Modifier">
          <font>
             <Font size="10.0" />
          </font>
@@ -42,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="87.0" layoutY="330.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #e06666; -fx-background-radius: 5;" text="Supprimer" textFill="WHITE">
+      <Button fx:id="supprimer_button" layoutX="87.0" layoutY="142.0" mnemonicParsing="false" onAction="#supprimerButtonClicked" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #e06666; -fx-background-radius: 5;" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
@@ -50,5 +39,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField fx:id="nom_pays" layoutX="124.0" layoutY="91.0" promptText="Nom du pays" style="-fx-border-color: #60b9db;" />
    </children>
 </AnchorPane>

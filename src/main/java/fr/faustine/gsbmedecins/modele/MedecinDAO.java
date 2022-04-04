@@ -85,6 +85,7 @@ public class MedecinDAO extends ConnexionBDD {
         return medecin;
     }
 
+    // Ajout d'un médecin
     public static void addMedecin(String nom, String prenom, String adresse, String tel, String specialiteComplementaire, Integer departement_id) {
         try {
             ConnexionBDD.execute("INSERT INTO medecin (nom, prenom, adresse, tel, specialiteComplementaire, departement_id) VALUES ('" + nom + "', '" + prenom + "', '" + adresse + "', '" + tel + "', '" + specialiteComplementaire + "', '" + departement_id + "');");
@@ -93,9 +94,39 @@ public class MedecinDAO extends ConnexionBDD {
         }
     }
 
+    public static ObservableList<Medecin> getByLike(String search) {
+        ObservableList<Medecin> medecins_List = FXCollections.observableArrayList();
+
+        try {
+            ResultSet request = ConnexionBDD.query(
+                    "SELECT * FROM medecin " +
+                            "WHERE nom LIKE '%" + search + "%' OR prenom LIKE '%" + search + "%' OR specialiteComplementaire LIKE '%" + search + "%';"
+            );
+
+            while(request.next()) {
+                medecins_List.addAll(
+                        new Medecin(
+                                request.getInt("id"),
+                                request.getString("nom"),
+                                request.getString("prenom"),
+                                request.getString("adresse"),
+                                request.getString("tel"),
+                                request.getString("specialiteComplementaire"),
+                                request.getInt("departement_id")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return medecins_List;
+    }
+
+    // suppression d'un médecin par son ID
     public static void deleteMedecinByID(int id) {
         try {
-            ConnexionBDD.execute("DELETE * FROM medecin WHERE id = " + id + ";");
+            ConnexionBDD.execute("DELETE FROM medecin WHERE id = " + id + ";");
         } catch(SQLException e) {
             e.printStackTrace();
         }
@@ -123,5 +154,24 @@ public class MedecinDAO extends ConnexionBDD {
         }
 
         return medecin.getNom();
+    }
+
+    public static void updateMedicByID(Integer id, String new_nom, String new_prenom, String new_adresse, String new_tel, String new_specialite, String new_departement) {
+        Departement departement = DepartementDAO.getDepartementByLibelle(new_departement);
+
+        try {
+            ConnexionBDD.execute(
+        "UPDATE medecin " +
+                "SET nom = '" + new_nom + "', " +
+                "prenom = '" + new_prenom + "', " +
+                "adresse = '" + new_adresse + "', " +
+                "tel = '" + new_tel + "', " +
+                "specialiteComplementaire = '" + new_specialite + "', " +
+                "departement_id = " + departement.getId() + " " +
+                "WHERE id = " + id + ";"
+            );
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

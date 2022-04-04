@@ -82,7 +82,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="medecinssearchbar" layoutX="20.0" layoutY="80.0" prefHeight="20.0" prefWidth="184.0" promptText="Rechercher un département..." style="-fx-background-color: #FFFFFF#FFFFFF; -fx-background-radius: 5;">
+      <TextField fx:id="departementsearchbar" layoutX="20.0" layoutY="80.0" prefHeight="20.0" prefWidth="184.0" promptText="Rechercher un département..." style="-fx-background-color: #FFFFFF#FFFFFF; -fx-background-radius: 5;">
          <font>
             <Font size="10.0" />
          </font>
@@ -98,6 +98,14 @@
       <Button fx:id="ajouter_button" layoutX="24.0" layoutY="110.0" mnemonicParsing="false" onAction="#ajouterButtonClicked" style="-fx-background-color: #93c47d; -fx-background-radius: 5;" text="Ajouter">
          <font>
             <Font size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="refresh_button" layoutX="237.0" layoutY="120.0" mnemonicParsing="false" onAction="#refreshButtonClicked" style="-fx-background-color: #60b9db#60b9db;" text="rafraîchir">
+         <font>
+            <Font size="9.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
