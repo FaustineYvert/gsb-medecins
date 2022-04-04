@@ -1,5 +1,6 @@
 package fr.faustine.gsbmedecins.controleur.medecin;
 
+import fr.faustine.gsbmedecins.MainController;
 import fr.faustine.gsbmedecins.modele.Departement;
 import fr.faustine.gsbmedecins.modele.DepartementDAO;
 import fr.faustine.gsbmedecins.modele.MedecinDAO;
@@ -70,6 +71,15 @@ public class AddController implements Initializable {
         if( !(nom_medecin.getText()).matches("[a-zA-Z]{2,45}") || !(prenom_medecin.getText()).matches("[a-zA-Z]{2,45}") ) {
             // Fenêtre d'erreur
             Alert alert = new Alert(Alert.AlertType.NONE, "Le nom ou prénom d'un médecin doit contenir au moins 2 caractère et ne peut contenir des chiffres.", ButtonType.OK);
+            alert.showAndWait();
+
+            return; // Va stopper le code et n'exécute pas ce qui suit.
+        }
+
+        // On vérifie le numéro de téléphone
+        if(!MainController.isNumeric(tel_medecin.getText()) || tel_medecin.getText().length() < 10) {
+            // Fenêtre d'erreur
+            Alert alert = new Alert(Alert.AlertType.NONE, "Le numéro de téléphone ne peut contenir des lettres et moins de 10 caractères.", ButtonType.OK);
             alert.showAndWait();
 
             return; // Va stopper le code et n'exécute pas ce qui suit.

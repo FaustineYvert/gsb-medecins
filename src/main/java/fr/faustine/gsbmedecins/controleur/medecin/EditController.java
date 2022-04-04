@@ -1,5 +1,6 @@
 package fr.faustine.gsbmedecins.controleur.medecin;
 
+import fr.faustine.gsbmedecins.MainController;
 import fr.faustine.gsbmedecins.modele.Departement;
 import fr.faustine.gsbmedecins.modele.DepartementDAO;
 import fr.faustine.gsbmedecins.modele.Medecin;
@@ -90,12 +91,23 @@ public class EditController implements Initializable {
                 return;
             }
 
+            /*
             // On vérifie si le n° de téléphone contient que des chiffres (de 0 à 9)
             if(!tel_medecin.getText().matches("^[0-9]+$")) {
                 Alert alert = new Alert(Alert.AlertType.NONE, "Le numéro de téléphone doit comporter seulement des chiffres", ButtonType.OK);
                 alert.showAndWait();
 
                 return;
+            }
+             */
+
+            // On vérifie le numéro de téléphone
+            if(!MainController.isNumeric(tel_medecin.getText()) || tel_medecin.getText().length() < 10) {
+                // Fenêtre d'erreur
+                Alert alert = new Alert(Alert.AlertType.NONE, "Le numéro de téléphone ne peut contenir des lettres et moins de 10 caractères.", ButtonType.OK);
+                alert.showAndWait();
+
+                return; // Va stopper le code et n'exécute pas ce qui suit.
             }
 
             // Add infos

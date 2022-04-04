@@ -8,16 +8,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="296.0" style="-fx-background-color: #C6E2FF #C6E2FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="296.0" style="-fx-background-color: #C6E2FF #C6E2FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.faustine.gsbmedecins.controleur.ConnexionController">
    <children>
-      <TextField layoutX="59.0" layoutY="235.0" prefHeight="31.0" prefWidth="180.0" promptText="Identifiant..." style="-fx-border-color: #60b9db#60b9db; -fx-border-radius: 3;" />
-      <PasswordField layoutX="59.0" layoutY="273.0" prefHeight="31.0" prefWidth="180.0" promptText="Mot de passe..." style="-fx-border-color: #60b9db; -fx-border-radius: 3;" />
+      <TextField fx:id="nom_utilisateur" layoutX="59.0" layoutY="235.0" prefHeight="31.0" prefWidth="180.0" promptText="Identifiant..." style="-fx-border-color: #60b9db#60b9db; -fx-border-radius: 3;" />
+      <PasswordField fx:id="mot_de_passe" layoutX="59.0" layoutY="273.0" prefHeight="31.0" prefWidth="180.0" promptText="Mot de passe..." style="-fx-border-color: #60b9db; -fx-border-radius: 3;" />
       <ImageView fitHeight="361.0" fitWidth="368.0" layoutX="-38.0" layoutY="52.0">
          <image>
             <Image url="@../assets/img/connect.png" />
          </image>
       </ImageView>
-      <Button fx:id="connecter_button" layoutX="89.0" layoutY="375.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5;" stylesheets="@../assets/css/AP4css.css" text="Se connecter">
+      <Button fx:id="connecter_button" layoutX="89.0" layoutY="375.0" mnemonicParsing="false" onAction="#connexionButtonClicked" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5;" stylesheets="@../assets/css/AP4css.css" text="Se connecter">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

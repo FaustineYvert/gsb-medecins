@@ -27,6 +27,22 @@ public class MainController {
         stage.show();
     }
 
+    public static boolean isNumeric(String string) {
+        int intValue;
+
+        if(string == null || string.equals("")) {
+            return false;
+        }
+
+        try {
+            intValue = Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // FXML Functions
         // NavBar
     @FXML
@@ -49,4 +65,7 @@ public class MainController {
         changerPage("vue/medecin-view.fxml", event);
     }
 
+    public void switchButtonClicked(ActionEvent event) throws IOException {
+        changerPage("vue/connect-view.fxml", event);
+    }
 }
