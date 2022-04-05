@@ -1,23 +1,36 @@
 package fr.faustine.gsbmedecins;
 
+import fr.faustine.gsbmedecins.modele.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
     // Variables
     private static Stage stage;
+    private static boolean isOnSoftware = false;
+
+    // FXML Variables
+    @FXML
+    private Text user_name;
 
     // Normal Functions
     public static void changerPage(String page, ActionEvent event) throws IOException {
+        if(page == "vue/accueil-view.fxml") { isOnSoftware = true; }
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource(page)));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -67,5 +80,17 @@ public class MainController {
 
     public void switchButtonClicked(ActionEvent event) throws IOException {
         changerPage("vue/connect-view.fxml", event);
+    }
+
+    public void deconnexionButtonClicked(ActionEvent event) throws IOException {
+        Utilisateur.disconnectUser();
+        changerPage("vue/connect-view.fxml", event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(Utilisateur.getUtilisateurActuel() != null) {
+            user_name.setText(Utilisateur.getUtilisateurActuel().getNom_utilisateur());
+        }
     }
 }

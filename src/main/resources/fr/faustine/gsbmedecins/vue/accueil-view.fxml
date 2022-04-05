@@ -75,7 +75,7 @@
          </cursor>
       </Button>
       <Text layoutX="60.0" layoutY="210.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="PAYS" />
-      <Text layoutX="16.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software." textAlignment="JUSTIFY" wrappingWidth="263.997314453125">
+      <Text layoutX="17.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Le laboratoire Galaxy Swiss Bourdin (GSB) est issu de la fusion entre le géant américain Galaxy (spécialisé dans le secteur des maladies virales dont le SIDA et les hépatites) et le conglomérat européen Swiss Bourdin (travaillant sur des médicaments plus conventionnels), lui même déjà union de trois petits laboratoires .En 2009, les deux géants pharmaceutiques ont uni leurs forces pour créer un leader de ce secteur industriel. L’entité Galaxy Swiss Bourdin Europe a établi son siège administratif à Paris." textAlignment="JUSTIFY" wrappingWidth="259.997314453125">
          <font>
             <Font size="10.0" />
          </font>
@@ -147,10 +147,18 @@
             <Image url="@../assets/img/accueil-bienvenue.png" />
          </image>
       </ImageView>
-      <Text fill="#5b5b5b" layoutX="207.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*nom*">
+      <Text fx:id="user_name" fill="#5b5b5b" layoutX="195.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="placeholder">
          <font>
             <Font size="10.0" />
          </font>
       </Text>
+      <Button fx:id="deconnexion_button" layoutX="95.0" layoutY="467.0" mnemonicParsing="false" onAction="#deconnexionButtonClicked" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF #C6E2FF;" text="Se déconnecter" textFill="#bf1b1b" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

@@ -100,7 +100,7 @@ public class MedecinDAO extends ConnexionBDD {
         try {
             ResultSet request = ConnexionBDD.query(
                     "SELECT * FROM medecin " +
-                            "WHERE nom LIKE '%" + search + "%' OR prenom LIKE '%" + search + "%' OR specialiteComplementaire LIKE '%" + search + "%';"
+                            "WHERE nom LIKE '%" + search + "%' OR prenom LIKE '%" + search + "%' OR specialiteComplementaire LIKE '%" + search + "%' OR departement_id LIKE '%" + search + "%'"
             );
 
             while(request.next()) {

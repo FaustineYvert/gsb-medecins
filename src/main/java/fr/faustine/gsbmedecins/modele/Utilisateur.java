@@ -32,6 +32,8 @@ public class Utilisateur {
         Utilisateur.utilisateurActuel = utilisateur;
     }
 
+    public static void disconnectUser() { Utilisateur.utilisateurActuel = null; }
+
     public static Utilisateur getUtilisateurActuel() {
         return Utilisateur.utilisateurActuel;
     }

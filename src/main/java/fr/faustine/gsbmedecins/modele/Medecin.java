@@ -11,7 +11,7 @@ public class Medecin {
     private Integer departement_id;
 
     // Constructeur
-    public Medecin(Integer id, String nom, String prenom, String adresse, String tel, String specialiteComplementaire,Integer departement_id) {
+    public Medecin(Integer id, String nom, String prenom, String adresse, String tel, String specialiteComplementaire, Integer departement_id) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;

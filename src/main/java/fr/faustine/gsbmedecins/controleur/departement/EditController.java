@@ -5,7 +5,6 @@ import fr.faustine.gsbmedecins.modele.DepartementDAO;
 import fr.faustine.gsbmedecins.modele.Pays;
 import fr.faustine.gsbmedecins.modele.PaysDAO;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
